@@ -41,11 +41,13 @@ function isNotANumber(received, description) {
 }
 
 function isEqual(received, expected, description) {
-    if (received === expected || (Number.isNaN(received) && Number.isNaN(expected))) {
+
+    if (received === expected) {
         console.log(`🟢 ${description}`);
     } else {
         console.log(`🔴 ${description}. Expected ${expected}, received ${received}`);
     }
+
 }
 
 export default test

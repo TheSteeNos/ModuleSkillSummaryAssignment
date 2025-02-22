@@ -4,8 +4,8 @@ const tests = test("Conversion from Inch to Millimeter test");
 
 
 function inchToMm(inch) {
-    inch = +inch
-    return (inch*25.4)
+    inch = +inch;
+    return (inch*25.4);
 }
 
 tests.isEqual(inchToMm(11), 279.4, 'Expects to convert 11 inches to 279.4 millimeters');

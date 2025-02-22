@@ -4,8 +4,8 @@ const tests = test("Square of Number Test");
 
 
 function squareFinder(num) {
-    num = +num
-    return num*num
+    num = +num;
+    return num*num;
 }
 
 tests.isEqual(squareFinder(4), 16, 'Expects square of 4 which is 16');

@@ -4,8 +4,8 @@ const tests = test("Cube of Number Test");
 
 
 function cubeFinder(num) {
-    num = +num
-    return num*num*num
+    num = +num;
+    return num*num*num;
 }
 
 tests.isEqual(cubeFinder(4), 64, 'Expects cube of 4 which is 64');
