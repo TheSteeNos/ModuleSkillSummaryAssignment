@@ -1,6 +1,5 @@
 import test from "../../tools/test.mjs";
-const tests = test("Square Root Test");
-
+const tests = test("Root of Number Test");
 
 //Calculating square root using the Babylonian formula
 
