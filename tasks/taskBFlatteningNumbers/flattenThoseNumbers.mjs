@@ -57,16 +57,16 @@ let taskB = [
   ]
 
 function flattenArray(input) {
+    if (!Array.isArray(input)) return [];
     let output = [];
 
     for (let sec of input) {
         if (Array.isArray(sec)) {
-            output = output.concat(flattenArray(sec)); 
+            output.push(...flattenArray(sec)); 
         } else {
-        output.push(sec);
+            output.push(sec);
         } 
     }
-
     return output;
 }
 
@@ -82,3 +82,4 @@ tests.arraysAreEqual(flattenArray([[[]], 1, [[2], [[3]]]]), [1, 2, 3], 'Expects 
 tests.arraysAreEqual(flattenArray([1, 'a', [2, 'b', [3, 'c']]]), [1, 'a', 2, 'b', 3, 'c'], 'Expects non-number elements to be kept as-is');
 tests.arraysAreEqual(flattenArray([null, [undefined, [NaN]]]), [null, undefined, NaN], 'Expects null, undefined, and NaN to be kept as-is');
 tests.arraysAreEqual(flattenArray([Infinity, [-Infinity, [5]]]), [Infinity, -Infinity, 5], 'Expects Infinity and -Infinity to be kept');
+tests.arraysAreEqual(flattenArray('donALd'), [], 'Expects to return empty array as input is not an array');
