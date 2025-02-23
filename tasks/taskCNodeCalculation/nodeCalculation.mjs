@@ -1,5 +1,7 @@
 import test from "../../tools/test.mjs";
 const tests = test("Node Calculation Test");
+const filepath = 'C:/Users/david/Documents/School Work/Year 2.2/Programming 2/Exam2/moduleSkillSummaryAssignment/example_files/nodes.json';
+const stringRead = 'utf8';
 import fs from 'fs';
 
 function nodeCalculation(node, depth = 1) {
@@ -17,7 +19,7 @@ function nodeCalculation(node, depth = 1) {
     };
 }
 
-fs.readFile('C:/Users/david/Documents/School Work/Year 2.2/Programming 2/Exam2/moduleSkillSummaryAssignment/example_files/nodes.json', 'utf8', (error, content) => {
+fs.readFile(filepath, stringRead, (error, content) => {
     if (error) {
         console.log('Error trying to read:', error);
         return;
