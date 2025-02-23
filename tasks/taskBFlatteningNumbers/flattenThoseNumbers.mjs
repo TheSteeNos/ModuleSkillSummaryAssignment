@@ -72,3 +72,13 @@ function flattenArray(input) {
 
 let flattenedTaskB = flattenArray(taskB);
 console.log(flattenedTaskB);
+
+tests.arraysAreEqual(flattenArray([1, 2, 3]), [1, 2, 3], 'Expects a flat array to remain unchanged');
+tests.arraysAreEqual(flattenArray([1, [2, 3], 4]), [1, 2, 3, 4], 'Expects nested arrays to be flattened');
+tests.arraysAreEqual(flattenArray([[1, 2], [3, 4], 5]), [1, 2, 3, 4, 5], 'Expects multiple nested arrays to be flattened');
+tests.arraysAreEqual(flattenArray([]), [], 'Expects an empty array to remain empty');
+tests.arraysAreEqual(flattenArray([1, [2, [3, [4, 5]]]]), [1, 2, 3, 4, 5], 'Expects deeply nested arrays to be flattened');
+tests.arraysAreEqual(flattenArray([[[]], 1, [[2], [[3]]]]), [1, 2, 3], 'Expects empty nested arrays to be ignored');
+tests.arraysAreEqual(flattenArray([1, 'a', [2, 'b', [3, 'c']]]), [1, 'a', 2, 'b', 3, 'c'], 'Expects non-number elements to be kept as-is');
+tests.arraysAreEqual(flattenArray([null, [undefined, [NaN]]]), [null, undefined, NaN], 'Expects null, undefined, and NaN to be kept as-is');
+tests.arraysAreEqual(flattenArray([Infinity, [-Infinity, [5]]]), [Infinity, -Infinity, 5], 'Expects Infinity and -Infinity to be kept');
