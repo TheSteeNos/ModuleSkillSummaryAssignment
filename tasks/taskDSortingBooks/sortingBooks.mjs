@@ -89,8 +89,88 @@ function isbnByAuthor(nameOfAuthor) {
     });
 }
 
+function alphabetizeBooks(order = 'ascending') {
+    fs.readFile(filepath, stringRead, (error, content) => {
+        if (error) {
+            console.log('Error trying to read:', error);
+            return;
+        }
+
+        const books = JSON.parse(content)
+
+        const searchAlphabetizeBooks = books.sort((a, b) => {
+            const titleA = a.title.toLowerCase();
+            const titleB = b.title.toLowerCase();
+
+            if (order.toLowerCase() === 'ascending') {
+                return titleA.localeCompare(titleB);
+            } else if (order.toLowerCase() === 'descending') {
+                return titleB.localeCompare(titleA);
+            }
+        });
+
+        console.log('Books sorted alphabetically in ', order.toLowerCase() + ' order:');
+        searchAlphabetizeBooks.forEach(book => console.log(book.title));
+    });
+}
+
+function chronologizeBooks(order = 'ascending') {
+    fs.readFile(filepath, stringRead, (error, content) => {
+        if (error) {
+            console.log('Error trying to read:', error);
+            return;
+        }
+
+        const books = JSON.parse(content)
+
+        const searchChronologizeBooks = books.sort((a, b) => {
+            const yearA = a.publication_year;
+            const yearB = b.publication_year;
+
+            if (order.toLowerCase() === 'ascending') {
+                return yearA - yearB;
+            } else if (order.toLowerCase() === 'descending') {
+                return yearB - yearA;
+            }
+        });
+
+        console.log('Books sorted chronologically in', order.toLowerCase() + ' order:');
+        searchChronologizeBooks.forEach(book => console.log(book.title));
+    });
+}
+
+function groupByAuthorFirstName() {
+    fs.readFile(filepath, stringRead, (error, content) => {
+        if (error) {
+            console.log('Error trying to read:', error);
+            return;
+        }
+
+        const books = JSON.parse(content)
+
+        const searchGroupByAuthorFirstName = books
+
+    });
+}
+
+function groupByAuthorLastName() {
+    fs.readFile(filepath, stringRead, (error, content) => {
+        if (error) {
+            console.log('Error trying to read:', error);
+            return;
+        }
+
+        const books = JSON.parse(content)
+
+        const searchGroupByAuthorLastName = books
+
+    });
+}
+
 startWithThe();
 authorsWithT();
 booksAfter1992();
 booksBefore2004();
 isbnByAuthor('Terry Pratchett');
+alphabetizeBooks('ascending');
+chronologizeBooks('ascending')
